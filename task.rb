@@ -34,7 +34,7 @@ def q4
   sports = ["サッカー", "フットサル", nil, "野球", "バスケ", nil, "バレー"]
 
   # 以下に回答を記載
-  sports.delete(nil)
+  sports.compact!
   # 以下は変更しないで下さい
   p sports
 end
@@ -45,32 +45,34 @@ def q5
 
   # 以下に回答を記載
   puts array1.empty?
-  # または blank?
-  puts array2.nil?
-  # または empty?,blank?
+
+  puts array2.empty?
+  
 end
 
 def q6
   numbers1 = [1, 2, 3, 4, 5]
 
   # 以下に回答を記載
-
+  numbers2 = [10,20,30,40,50]
+  p numbers2
 end
 
 def q7
   array = ["1", "2", "3", "4", "5"]
 
   # 以下に回答を記載
-
+  array.map! {|a|a.to_i}
   # 以下は変更しないで下さい
   p array
 end
 
 def q8
   programming_languages = %w(ruby php python javascript)
-
+  # %wは、配列を作る。配列の要素はスペース区切りで指定する。式の展開はされない。
   # 以下に回答を記載
-
+  programming_languages.map! {|pl|pl.capitalize}
+  upper_case_programming_languages = programming_languages.map {|pl|pl.upcase}
   # 以下は変更しないで下さい
   p programming_languages
   p upper_case_programming_languages
@@ -80,6 +82,9 @@ def q9
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
+  names.each.with_index(1) do |name,i|
+    puts "会員No.#{i} #{name}さん"
+  end
 
 end
 
@@ -87,7 +92,13 @@ def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
 
   # 以下に回答を記載
-
+  foods.each do |i|
+  if i.include?("うに")
+    puts "好物です"
+  else 
+    puts "まぁまぁ好きです"
+  end
+  end
 end
 
 def q11
