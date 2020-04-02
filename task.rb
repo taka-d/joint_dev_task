@@ -54,15 +54,16 @@ def q6
   numbers1 = [1, 2, 3, 4, 5]
 
   # 以下に回答を記載
-  numbers2 = [10,20,30,40,50]
+  numbers2 = numbers1.map {|n1|n1 * 10}
   p numbers2
+  p numbers1
 end
 
 def q7
   array = ["1", "2", "3", "4", "5"]
 
   # 以下に回答を記載
-  array.map! {|a|a.to_i}
+  array = array.map(&:to_i)
   # 以下は変更しないで下さい
   p array
 end
@@ -71,8 +72,8 @@ def q8
   programming_languages = %w(ruby php python javascript)
   # %wは、配列を作る。配列の要素はスペース区切りで指定する。式の展開はされない。
   # 以下に回答を記載
-  programming_languages.map! {|pl|pl.capitalize}
-  upper_case_programming_languages = programming_languages.map {|pl|pl.upcase}
+  programming_languages =  programming_languages.map(&:capitalize)
+  upper_case_programming_languages = programming_languages.map(&:upcase)
   # 以下は変更しないで下さい
   p programming_languages
   p upper_case_programming_languages
@@ -92,50 +93,78 @@ def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
 
   # 以下に回答を記載
-  foods.each do |i|
-  if i.include?("うに")
-    puts "好物です"
-  else 
-    puts "まぁまぁ好きです"
-  end
-  end
+  # foods.each do |food|
+  # if food.include?("うに")
+  #    puts "好物です"
+  #else  
+  #   puts "まぁまぁです"
+  #end
+  #end
+  foods.each do |food|
+  p food.include?("うに") ? "好物です" : "まぁまぁです"
+  #三項演算子
+  end  
 end
 
 def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-
+  sports.delete_at(3)
+  sports.delete_at(5)
+  sports.insert(3,"フットサル")
+  sports.insert(6,"卓球")
+  sports.insert(7,"ボルダリング")
+  puts "ユーザーの趣味一覧"
+  sports.each.with_index(1) do |sports,i| 
+  puts "No#{i} #{sports}"
+  end
+  #調べ尽くして意地で出しましたw
 end
 
 def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
-
-end
+  puts data[:user][:name]
+end  
 
 def q13
   user_data = { name: "神里", age: 31, address: "埼玉" }
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  user_data[:age] = 32
+  user_data[:address] = "沖縄"
+  puts user_data
 end
 
 def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
-
-end
+  data2 = data.keys
+  p data2
+  end
 
 def q15
   data1 = { name: "saitou", hobby: "soccer", age: 33, role: "admin" }
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-
+  if data1.has_key?(:age)
+     puts "OK"
+else 
+     puts "NG"
+end
+  if data2.has_key?(:age)
+    puts "OK"
+else
+    puts "NG"
+end 
+puts data1.has_key?(:age) ? "OK" : "NG"
+puts data2.has_key?(:age) ? "OK" : "NG"  
+  
 end
 
 def q16
@@ -147,7 +176,9 @@ def q16
   ]
 
   # 以下に回答を記載
-
+  users.each do |user|
+puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}歳です。"
+  end
 end
 
 class UserQ17
