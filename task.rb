@@ -110,16 +110,13 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-  sports.delete_at(3)
-  sports.delete_at(5)
-  sports.insert(3,"フットサル")
-  sports.insert(6,"卓球")
-  sports.insert(7,"ボルダリング")
+  sports = sports.flatten.uniq
+  
   puts "ユーザーの趣味一覧"
   sports.each.with_index(1) do |sports,i| 
   puts "No#{i} #{sports}"
   end
-  #調べ尽くして意地で出しましたw
+  
 end
 
 def q12
@@ -134,9 +131,9 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-  user_data[:age] = 32
-  user_data[:address] = "沖縄"
-  puts user_data
+  user_data.store(:age, 32)
+  user_data.store(:address, "沖縄")
+    puts user_data
 end
 
 def q14
@@ -152,16 +149,16 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-  if data1.has_key?(:age)
-     puts "OK"
-else 
-     puts "NG"
-end
-  if data2.has_key?(:age)
-    puts "OK"
-else
-    puts "NG"
-end 
+#  if data1.has_key?(:age)
+#     puts "OK"
+#else 
+#     puts "NG"
+#end
+#  if data2.has_key?(:age)
+#    puts "OK"
+#else
+#    puts "NG"
+#end 
 puts data1.has_key?(:age) ? "OK" : "NG"
 puts data2.has_key?(:age) ? "OK" : "NG"  
   
