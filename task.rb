@@ -256,7 +256,6 @@ end
 
 class Zoo
   # 以下に回答を記載
-  attr_reader :name, :entry_fee
   def initialize(name:, entry_fee:)
     @name = name
     @entry_fee = entry_fee
